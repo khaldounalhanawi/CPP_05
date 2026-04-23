@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 15:50:45 by kalhanaw          #+#    #+#             */
+/*   Updated: 2026/04/23 15:50:46 by kalhanaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
@@ -36,8 +48,6 @@ class Bureaucrat
 			public:
 				virtual const char *what() const throw ();
 		};
-
-
 };
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat &member);
