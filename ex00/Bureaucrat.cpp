@@ -3,13 +3,13 @@
 
 const char *Bureaucrat::GradeTooLowException::what() const throw ()
 {
-	return	"Grade entered too LOW:\n"
+	return	"Grade too LOW:\n"
 			"it has to be higher than 0 and smaller/equal to 150!";
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw ()
 {
-	return	"Grade entered too HIGH:\n"
+	return	"Grade too HIGH:\n"
 			"it has to be higher than 0 and smaller/equal to 150!";
 }
 
@@ -50,6 +50,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& source)
 
 Bureaucrat::~Bureaucrat()
 {
+	return ;
 }
 
 const int	&Bureaucrat::getGrade() const
@@ -68,4 +69,18 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat &member)
 				<< ", bureaucrat grade "
 				<< member.getGrade () 
 				<<".");
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (this->_grade + 1 > 150)
+		throw Bureaucrat::GradeTooHighException ();
+	this->_grade ++;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (this->_grade - 1 < 1)
+		throw Bureaucrat::GradeTooLowException ();
+	this->_grade --;
 }
