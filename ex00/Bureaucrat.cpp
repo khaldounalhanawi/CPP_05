@@ -27,14 +27,26 @@ _grade(grade)
 	return ;
 }
 
-// Bureaucrat::Bureaucrat(const Bureaucrat& other)
-// {
-// }
+Bureaucrat::Bureaucrat(const Bureaucrat& other):
+_name(other.getName() + "_copy")
+{
+	std::cout	<< this->_name	<< " has been created Via Copy"
+				<< std::endl;
 
-// Bureaucrat& Bureaucrat::operator=(const Bureaucrat& source)
-// {
-// 	return *this;
-// }
+	this->_grade = other.getGrade ();
+	return ;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& source)
+{
+	if (this != &source)
+		this->_grade = source.getGrade ();
+		
+	std::cout	<< this->_name	<< " === " << source.getName ()
+				<< std::endl;
+
+	return (*this);
+}
 
 Bureaucrat::~Bureaucrat()
 {
@@ -48,4 +60,12 @@ const int	&Bureaucrat::getGrade() const
 const std::string	&Bureaucrat::getName() const
 {
 	return (this->_name);
+}
+
+std::ostream	&operator<<(std::ostream &os, Bureaucrat &member)
+{
+	return (os	<< member.getName () 
+				<< ", bureaucrat grade "
+				<< member.getGrade () 
+				<<".");
 }
