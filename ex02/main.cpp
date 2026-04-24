@@ -6,7 +6,7 @@
 /*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 15:50:50 by kalhanaw          #+#    #+#             */
-/*   Updated: 2026/04/24 15:59:30 by kalhanaw         ###   ########.fr       */
+/*   Updated: 2026/04/24 16:33:03 by kalhanaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 int	main()
 {
 	Bureaucrat	employee1 ("Ana", 15);
-	AForm		*form1;
+	AForm		*form2;
+	AForm		*form1 = NULL;
 
-	form1 =  new ShrubberyCreationForm ("home");
+	form2 =  new ShrubberyCreationForm ("home");
+	form1 = form2;
 
 	std::cout<< "************" << std::endl;
 	std::cout<< *form1 << std::endl;
