@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm copy.cpp                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 16:25:02 by kalhanaw          #+#    #+#             */
-/*   Updated: 2026/04/26 13:26:27 by kalhanaw         ###   ########.fr       */
+/*   Updated: 2026/04/26 12:40:04 by kalhanaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
-void	create_tree_file (const std::string &target);
+void	make_noise (void);
+void	robotomize (std::string	target);
 
 // ________________________ Constructors / destructor ________________________ //
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-AForm ("ShrubberyCreationForm", 145, 137),
+RobotomyRequestForm::RobotomyRequestForm(std::string target) :
+AForm ("RobotomyRequestForm", 72, 45),
 _target(target)
 {
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other):
-AForm ("ShrubberyCreationForm", 145, 137),
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):
+AForm ("RobotomyRequestForm", 145, 137),
 _target(other.getTarget ())
 {
 	return ;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
 	return ;
 }
 
 // ________________________ Operator overloads ________________________ //
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& source)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& source)
 {
 	if (this != &source)
 		this->_target = source.getTarget ();
@@ -47,14 +48,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 // ________________________ Setter & Getters ________________________ //
 
-const std::string	&ShrubberyCreationForm::getTarget() const
+const std::string	&RobotomyRequestForm::getTarget() const
 {
 	return (this->_target);
 }
 
 // ________________________ Member functions ________________________ //
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	// 	** You must check that the form is signed
 	if (!this->getSignatureStatus())
@@ -63,46 +64,34 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	// ** and that the grade of the bureaucrat attempting to execute the form is high enough.
 	if (executor.getGrade() > this->getExecutionGrade ())
 		throw (AForm::NoClearanceException ());
-	
-	// Creates a file <target>_shrubbery in the working directory and writes ASCII trees inside it.
-	create_tree_file (this->_target);
+
+	// make noise and robotomize
+	make_noise ();
+	robotomize (this->_target);
 
 	std::cout	<< executor.getName()	<< " has successfully executed form "
 				<< this->getName()		<< std::endl;
 }
 
 // ________________________ Helper functions ________________________ //
+# include <ctime>
 
-#include <iostream>
-#include <fstream>
-
-void	create_tree_file (const std::string &target)
+void	make_noise(void)
 {
-	std::ofstream file(target + "_shrubbery");
+	std::cout	<< "><><>< Bbbbzzzz zZaap BBbbbzz ><><><"
+				<< std::endl;
+}
 
-	if (file.is_open())
-	{
-		file <<
-		"        /\\                /\\               /\\\n"
-		"       /**\\              /**\\             /**\\\n"
-		"      /****\\            /****\\           /****\\\n"
-		"     /******\\          /******\\         /******\\\n"
-		"    /********\\        /********\\       /********\\\n"
-		"       ||                ||               ||\n"
-		"\n"
-		"               /\\\n"
-		"              /**\\\n"
-		"             /****\\\n"
-		"            /******\\\n"
-		"           /********\\\n"
-		"              ||\n"
-		"\n"
-		"   _\\|/_\n"
-		"   (> <)\n"
-		"   /   \\\n";
-	}
-	else
-		throw (std::runtime_error ("Couldn't create file.\n"));
+void	robotomize(std::string	target)
+{
+	bool				dice;
+	static std::string	msg[2] = {	(target + " has failed to robotomize"),
+									(target + " has been successfully robotomized!")};
 
-	file.close ();
+	std::srand (std::time (0));
+	dice = std::rand () % 2;
+
+	std::cout	<< msg[dice]
+				<< std::endl;
+	return ;
 }

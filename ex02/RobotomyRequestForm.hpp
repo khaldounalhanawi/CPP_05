@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string	_target;
 
 	public:
-		ShrubberyCreationForm (std::string target);
-		ShrubberyCreationForm (ShrubberyCreationForm const &copy);
-		~ShrubberyCreationForm ();
+		RobotomyRequestForm (std::string target);
+		RobotomyRequestForm (RobotomyRequestForm const &copy);
+		~RobotomyRequestForm ();
 
 		// Operator overrides
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &source);
+		RobotomyRequestForm &operator=(RobotomyRequestForm const &source);
 
 		// Setters & Getters
 		const std::string	&getTarget() const;

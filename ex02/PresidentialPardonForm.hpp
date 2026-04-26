@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 16:25:22 by kalhanaw          #+#    #+#             */
-/*   Updated: 2026/04/24 17:00:12 by kalhanaw         ###   ########.fr       */
+/*   Created: 2026/04/24 17:00:43 by kalhanaw          #+#    #+#             */
+/*   Updated: 2026/04/24 17:00:44 by kalhanaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string	_target;
 
 	public:
-		ShrubberyCreationForm (std::string target);
-		ShrubberyCreationForm (ShrubberyCreationForm const &copy);
-		~ShrubberyCreationForm ();
+		PresidentialPardonForm (std::string target);
+		PresidentialPardonForm (PresidentialPardonForm const &copy);
+		~PresidentialPardonForm ();
 
 		// Operator overrides
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &source);
+		PresidentialPardonForm &operator=(PresidentialPardonForm const &source);
 
 		// Setters & Getters
 		const std::string	&getTarget() const;

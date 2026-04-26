@@ -2,12 +2,17 @@ NAME = forms
 CC = c++
 HEADER = AForm.hpp \
 		Bureaucrat.hpp \
-		ShrubberyCreationForm.hpp
+		ShrubberyCreationForm.hpp \
+		PresidentialPardonForm.hpp \
+		RobotomyRequestForm.hpp
+
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = AForm.cpp \
 		Bureaucrat.cpp \
 		ShrubberyCreationForm.cpp \
-		main.cpp
+		PresidentialPardonForm.cpp \
+		main.cpp \
+		RobotomyRequestForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
